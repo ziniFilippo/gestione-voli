@@ -1,11 +1,8 @@
-package main.java.viaggi;
-
-import java.io.*;
-import java.util.*;
-
+package viaggi;
 
 class Cliente {
-    static private int codiceCliente = 0;
+    static public int codici = 0;
+    private int codiceCliente;
     private String cognome;
     private String nome;
     private String nazioneNascita;
@@ -13,7 +10,8 @@ class Cliente {
     private String dataNascita;
 
     public Cliente(String cognome, String nome, String nazioneNascita, String cittaNascita, String dataNascita) {
-        codiceCliente++;
+        codiceCliente = codici;
+        codici++;
         this.cognome = cognome;
         this.nome = nome;
         this.nazioneNascita = nazioneNascita;
@@ -52,9 +50,6 @@ class Cliente {
     }
     public void setCittaNascita(String cittaNascita) {
         this.cittaNascita = cittaNascita;
-    }
-    public static void setCodiceCliente(int codiceCliente) {
-        Cliente.codiceCliente = codiceCliente;
     }
     public void setDataNascita(String dataNascita) {
         this.dataNascita = dataNascita;

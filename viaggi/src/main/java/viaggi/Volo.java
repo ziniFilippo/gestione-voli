@@ -1,4 +1,4 @@
-package main.java.viaggi;
+package viaggi;
 
 // Classe Volo
 class Volo {

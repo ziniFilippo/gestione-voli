@@ -1,4 +1,5 @@
-package main.java.viaggi;
+package viaggi;
+
 
 // Classe Prenotazione
 class Prenotazione {

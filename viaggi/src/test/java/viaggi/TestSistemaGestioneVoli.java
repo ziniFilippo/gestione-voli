@@ -1,15 +1,14 @@
 package viaggi;
-import static org.junit.Assert.*;
-import org.junit.Before;
-import org.junit.Test;
-import java.util.List;
+import org.junit.jupiter.api.*;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestSistemaGestioneVoli {
     private Clienti clienti;
     private Voli voli;
     private Prenotazioni prenotazioni;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         clienti = new Clienti();
         voli = new Voli();
@@ -18,17 +17,17 @@ public class TestSistemaGestioneVoli {
 
     @Test
     public void testAggiungiCliente() {
-        Cliente cliente = new Cliente("001", "Rossi", "Mario", "Italia", "Roma", "01/01/1990");
+        Cliente cliente = new Cliente("Rossi", "Mario", "Italia", "Roma", "01/01/1990");
         clienti.aggiungiCliente(cliente);
-        assertEquals(cliente, clienti.cercaClientePerCodice("001"));
+        assertEquals(cliente, clienti.cercaClientePerCodice(1));
     }
 
     @Test
     public void testEliminaCliente() {
-        Cliente cliente = new Cliente("002", "Bianchi", "Laura", "Italia", "Milano", "02/02/1985");
+        Cliente cliente = new Cliente("Bianchi", "Laura", "Italia", "Milano", "02/02/1985");
         clienti.aggiungiCliente(cliente);
-        clienti.eliminaCliente("002");
-        assertNull(clienti.cercaClientePerCodice("002"));
+        clienti.eliminaCliente(1);
+        assertNull(clienti.cercaClientePerCodice(1));
     }
 
     @Test
@@ -48,7 +47,7 @@ public class TestSistemaGestioneVoli {
 
     @Test
     public void testAggiungiPrenotazione() {
-        Cliente cliente = new Cliente("003", "Verdi", "Giuseppe", "Italia", "Napoli", "03/03/1980");
+        Cliente cliente = new Cliente("Verdi", "Giuseppe", "Italia", "Napoli", "03/03/1980");
         Volo volo = new Volo("V003", "Aeroporto5", "Aeroporto6", "03/03/2023", "16:00", "18:00", 180, 180.0);
         clienti.aggiungiCliente(cliente);
         voli.aggiungiVolo(volo);
@@ -59,7 +58,7 @@ public class TestSistemaGestioneVoli {
 
     @Test
     public void testEliminaPrenotazione() {
-        Cliente cliente = new Cliente("004", "Ferrari", "Luigi", "Italia", "Torino", "04/04/1975");
+        Cliente cliente = new Cliente("Ferrari", "Luigi", "Italia", "Torino", "04/04/1975");
         Volo volo = new Volo("V004", "Aeroporto7", "Aeroporto8", "04/04/2023", "20:00", "22:00", 160, 220.0);
         clienti.aggiungiCliente(cliente);
         voli.aggiungiVolo(volo);
@@ -71,10 +70,10 @@ public class TestSistemaGestioneVoli {
 
     @Test
     public void testModificaCliente() {
-        Cliente cliente = new Cliente("005", "Gialli", "Anna", "Italia", "Bologna", "05/05/1988");
+        Cliente cliente = new Cliente("Gialli", "Anna", "Italia", "Bologna", "05/05/1988");
         clienti.aggiungiCliente(cliente);
-        clienti.modificaCliente("005", "Verdi", "Anna", "Francia", "Parigi", "05/05/1988");
-        Cliente clienteModificato = clienti.cercaClientePerCodice("005");
+        clienti.modificaCliente(4, "Verdi", "Anna", "Francia", "Parigi", "05/05/1988");
+        Cliente clienteModificato = clienti.cercaClientePerCodice(4);
         assertEquals("Verdi", clienteModificato.getCognome());
         assertEquals("Francia", clienteModificato.getNazioneNascita());
     }

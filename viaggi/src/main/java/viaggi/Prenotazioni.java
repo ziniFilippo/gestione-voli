@@ -1,4 +1,7 @@
-package main.java.viaggi;
+package viaggi;
+
+import java.util.*;
+import java.io.*;
 
 // Classe Prenotazioni
 class Prenotazioni {

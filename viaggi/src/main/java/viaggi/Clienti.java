@@ -1,5 +1,7 @@
-package main.java.viaggi;
+package viaggi;
 
+import java.util.*;
+import java.io.*;
 // Classe Clienti
 class Clienti {
     private List<Cliente> listaClienti;
@@ -12,11 +14,11 @@ class Clienti {
         listaClienti.add(cliente);
     }
 
-    public void eliminaCliente(String codiceCliente) {
-        listaClienti.removeIf(cliente -> cliente.getCodiceCliente().equals(codiceCliente));
+    public void eliminaCliente(int codiceCliente) {
+        listaClienti.removeIf(cliente -> cliente.getCodiceCliente()==codiceCliente);
     }
 
-    public void modificaCliente(String codiceCliente, String nuovoCognome, String nuovoNome, String nuovaNazioneNascita, String nuovaCittaNascita, String nuovaDataNascita) {
+    public void modificaCliente(int codiceCliente, String nuovoCognome, String nuovoNome, String nuovaNazioneNascita, String nuovaCittaNascita, String nuovaDataNascita) {
         for (Cliente cliente : listaClienti) {
             if (cliente.getCodiceCliente() == codiceCliente) {
                 cliente.setCognome(nuovoCognome);
@@ -29,7 +31,7 @@ class Clienti {
         }
     }
 
-    public Cliente cercaClientePerCodice(String codiceCliente) {
+    public Cliente cercaClientePerCodice(int codiceCliente) {
         for (Cliente cliente : listaClienti) {
             if (cliente.getCodiceCliente() == codiceCliente) {
                 return cliente;
